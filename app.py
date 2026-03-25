@@ -1,11 +1,15 @@
 import streamlit as st
+import os
 from openai import OpenAI
 from docx import Document
 from docx.shared import Pt
 from docx.enum.text import WD_ALIGN_PARAGRAPH
 
-# 🔑 Add your API key
-client = OpenAI(api_key="OPENAI_API_KEY")
+# 🔑 Read API key from Streamlit Secrets
+client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
+
+# Debug line (temporary)
+st.write("API key loaded:", os.getenv("OPENAI_API_KEY") is not None)
 
 
 # 🧾 Create clean Word Resume
